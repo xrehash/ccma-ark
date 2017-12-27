@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CCMA 2 < 3</title>
+    <script src="knockout-3.4.2.js"></script>
+    <link href="skeleton/normalize.css" rel="stylesheet" />
+    <link href="skeleton/skeleton.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="u-full-width banner">
+        <header>
+            <strong>Archived CCMA Record Query</strong>
+        </header>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div><br /></div>
+            <div data-bind="template:{name:activeDocumentType, if:activeDocument(), data:activeDocument}">
+            </div>
+
+            <div class="splash-container row">
+                <div class="splash twelve column bordered bordered-rounded">
+                    <div id="searchTab" class="">
+                        <h2>Search</h2>
+
+                        <div id="searchArea">
+                            <input class="bigText" type="text" data-bind="textInput: searchText" />
+                            <button class="button button-primary" data-bind="click:searchFn">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div data-bind="if:searchResults().length">
+                    <h4>Results</h4>
+                    <table class="u-full-width ">
+                        <thead>
+                            <tr>
+                                <th>Application No.</th>
+                                <th>Form/Document Type</th>
+                                <th>Relevance/Score</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach:searchResults">
+                            <tr data-bind="click: $root.showApplication">
+                                <td data-bind="text: ApplicationNumber"></td>
+                                <td data-bind="text: FormName"></td>
+                                <td data-bind="text: score"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="renderDiscussion">
+        <div class="bordered bordered-rounded">
+            <h3>Discussion- <span data-bind="text: Subject"></span></h3>
+            <table>
+                <tr><td>Application Number</td> <td><a data-bind="text: ApplicationNumber, click:$root.showApp, attr:{href: ApplicationNumber}"></a></td></tr>
+                <tr><td>From</td> <td><span data-bind="text: FromDisplay"></span> [<small data-bind="text:From"></small>]</td></tr>
+                <tr><td>GS Type</td> <td data-bind="text: GSType_text"></td></tr>
+                <tr><td>Date</td> <td data-bind="text: DateResponseCreated"></td></tr>
+                <tr><td>Notify</td> <td data-bind="text: Notify"></td></tr>
+                <tr><td>Service Address</td> <td data-bind="text: ServiceAddress"></td></tr>
+                <tr><td>Service Requestor</td> <td data-bind="text: ServiceRequestorName"></td></tr>
+            </table>
+            <div data-bind="text: Body"></div>
+        </div>
+    </script>
+    <script type="text/html" id="ApplicationRequest">
+        <div class="bordered bordered-rounded">
+            <h5 class="banner tiny">Application Display</h5>
+            <div class="container docView u-full-width bordered bordered-rounded">
+                <h4 class="heading">General</h4>
+                <span class="row"><span class="one-third column">Application Number</span><span class="two-thirds data column" data-bind="text:$data.ApplicationNumber"></span></span>
+                <span class="row"><span class="one-third column">Application Status</span><span class="two-thirds data column" data-bind="text:$data.ApplicationStatus"></span></span>
+                <span class="row"><span class="one-third column">Addresse</span><span class="two-thirds data column" data-bind="text:$data.Addresse"></span></span>
+                <span class="row"><span class="one-third column">Address</span><span class="two-thirds data column" data-bind="text:$data.Address"></span></span>
+                <span class="row"><span class="one-third column">Project Name</span><span class="two-thirds data column" data-bind="text:$data.ProjectName"></span></span>
+                <span class="row"><span class="one-third column">Parish</span><span class="two-thirds data column" data-bind="text:$data.LocAddrParish_lov"></span></span>
+                <span class="row"><span class="one-third column">Service Requestor</span><span class="two-thirds data column" data-bind="text:$data.ServiceRequestorName"></span></span>
+                <span class="row"><span class="one-third column">Service Address</span><span class="two-thirds data column" data-bind="text:$data.ServiceAddress"></span></span>
+                <span class="row"><span class="one-third column">Contact Info</span><span class="two-thirds data column" data-bind="text:$data.ContactInfo"></span></span>
+                <span class="row"><span class="one-third column">Driving Directions</span><span class="two-thirds data column" data-bind="text:$data.LocDrivingDirections_rtf_GI"></span></span>
+                <span class="row"><span class="one-third column">Service Type</span><span class="two-thirds data column" data-bind="text:$data.CCAServiceType"></span></span>
+                <span class="row"><span class="one-third column">GSType </span><span class="two-thirds data column" data-bind="text:$data.GSType_text"></span></span>
+            </div>
+        </div>
+    </script>
+
+    
+
+</body>
+
+</html>

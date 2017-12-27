@@ -1,0 +1,39 @@
+﻿body {
+    background-color:papayawhip;
+}
+
+.banner{
+    word-spacing:1em;
+    padding:0.5ex;
+    background-color:steelblue;
+}
+tbody tr:hover {
+    color:saddlebrown;
+    cursor:pointer;
+}
+.bordered{
+    border: 1pt solid steelblue;
+}
+.bordered-rounded{
+    padding:10pt;
+    border-radius:5px;
+}
+.docView{
+    background-color:whitesmoke;
+    color:sienna;
+}
+.bigText{
+    width:20em;
+}
+.splash{
+    margin-top:60pt;
+    background-color:tomato;
+    text-align:center;
+    margin-bottom:30pt;
+}
+.tiny{
+    font-size:80%;
+}
+.data{
+    color:rgb(20,5,20);
+}
